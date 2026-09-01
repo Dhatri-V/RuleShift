@@ -32,3 +32,12 @@ def create_policy_family(policy_family: PolicyFamilyCreate):
     db.close()
 
     return new_policy_family
+
+
+@app.get("/policy-families")
+def get_policy_families():
+    db = SessionLocal()
+    policy_families = db.query(PolicyFamily).all()
+    db.close()
+
+    return policy_families
